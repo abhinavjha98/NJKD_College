@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>jQuery CLNDR plugin</title> 
+        <meta charset="UTF-8" /> 
+        <link rel="stylesheet" href="clndr.css" /> 
+        <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"> 
+        </script> 
+        <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"> 
+        </script> 
+        <script src= 
+ "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"> 
+        </script> 
+        <script src="https://github.com/kylestetz/CLNDR/blob/master/src/clndr.js"></script> 
+        <style> 
+            body { 
+                font-family: Arial; 
+            } 
+            .msg-row { 
+                padding: 5px; 
+            } 
+            .container { 
+                width: 650px; 
+            } 
+            #constraintInfoID { 
+                margin-top: 5px; 
+                margin-left: 5px; 
+                width: 600px; 
+                text-align: center; 
+                font-weight: bold; 
+                padding: 10px 10px; 
+                box-sizing: content-box; 
+            } 
+        </style> 
+    </head> 
+    <body> 
+        <h1 style="color: green;">GeeksForGeeks</h1> 
+        <b>jQuery CLNDR Plugin</b> 
+        <div class="container"> 
+            <div id="calendarID" class="cal1"></div> 
+            <div id="constraintInfoID"></div> 
+        </div> 
+  
+        <script> 
+            var calendar = {}; 
+            $(document).ready(function () { 
+                calendar.clndr = $("#calendarID").clndr({ 
+                    constraints: { 
+                        startDate: "2020-05-06", 
+                        endDate: "2020-05-16", 
+                    }, 
+                    clickEvents: { 
+                        click: function (target) { 
+                            if (!$(target.element).hasClass("inactive")) { 
+                                var msg = "Valid date within the constraints!"; 
+                                $("#constraintInfoID") 
+                                  .append("<div class='msg-row' 
+                                                style='background-color:green'>"  
+                                          + msg + "</div>"); 
+                            } else { 
+                                var msg = "Date chosen is outside the constraint range"; 
+                                $("#constraintInfoID") 
+                                  .append("<div class='msg-row' 
+                                                style='background-color:red'>"  
+                                          + msg + "</div>"); 
+                            } 
+                        }, 
+                    }, 
+                }); 
+            }); 
+        </script> 
+    </body> 
+</html> 
